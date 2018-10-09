@@ -8,6 +8,11 @@ const commands = {
   "setTrackerUrl": setTrackerUrl,
 };
 
+// decide whenever to use cookie or local vars
+const useCookie = typeof(window.fathom.c) !== "string"
+const setData = useCookie ? setCookie : setLocalVar
+const getData = useCookie ? getCookie : getLocalVar
+
 // convert object to query string
 function stringifyObject(obj) {
   var keys = Object.keys(obj);
@@ -21,6 +26,14 @@ function stringifyObject(obj) {
 function randomString(n) {
   var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   return Array(n).join().split(',').map(() => s.charAt(Math.floor(Math.random() * s.length))).join('');
+}
+
+function getLocalVar(_name) {
+  return window.fathom.c;
+}
+
+function setLocalVar(_name, data, _args) {
+  window.fathom.c = data;
 }
 
 function getCookie(name) {
@@ -69,7 +82,7 @@ function getData() {
   let thirtyMinsAgo = new Date();
   thirtyMinsAgo.setMinutes(thirtyMinsAgo.getMinutes() - 30);
 
-  let data = getCookie('_fathom');
+  let data = getData('_fathom');
   if(! data) {
     return newVisitorData();
   }
@@ -165,10 +178,10 @@ function trackPageview() {
     data.isNewVisitor = false;
     data.isNewSession = false;
     data.lastSeen = +new Date();
-    setCookie('_fathom', JSON.stringify(data), { expires: midnight, path: '/' });
+    setData('_fathom', JSON.stringify(data), { expires: midnight, path: '/' });
   });
   document.body.appendChild(i);
-  window.setTimeout(() => { document.body.removeChild(i)}, 1000);
+  window.setTimeout(() => { document.body.removeChild(i) }, 1000);
 }
 
 // override global fathom object
