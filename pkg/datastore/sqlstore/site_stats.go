@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 func (db *sqlstore) GetSiteStats(date time.Time) (*models.SiteStats, error) {
@@ -39,7 +39,7 @@ func (db *sqlstore) GetSiteStatsPerDay(startDate time.Time, endDate time.Time) (
 
 func (db *sqlstore) GetAggregatedSiteStats(startDate time.Time, endDate time.Time) (*models.SiteStats, error) {
 	stats := &models.SiteStats{}
-	query := db.Rebind(`SELECT 
+	query := db.Rebind(`SELECT
 		COALESCE(SUM(pageviews), 0) AS pageviews,
 		COALESCE(SUM(visitors), 0) AS visitors,
 		COALESCE(SUM(sessions), 0) AS sessions,

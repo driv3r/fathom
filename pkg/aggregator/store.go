@@ -4,8 +4,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/usefathom/fathom/pkg/datastore"
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/datastore"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 func (agg *aggregator) getSiteStats(r *results, t time.Time) (*models.SiteStats, error) {

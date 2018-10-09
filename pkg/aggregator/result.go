@@ -1,7 +1,7 @@
 package aggregator
 
 import (
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 type results struct {

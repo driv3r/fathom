@@ -5,8 +5,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
-	"github.com/usefathom/fathom/pkg/config"
-	"github.com/usefathom/fathom/pkg/datastore"
+	"github.com/driv3r/fathom/pkg/config"
+	"github.com/driv3r/fathom/pkg/datastore"
 )
 
 type App struct {

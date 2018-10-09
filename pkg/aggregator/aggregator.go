@@ -3,8 +3,8 @@ package aggregator
 import (
 	"net/url"
 
-	"github.com/usefathom/fathom/pkg/datastore"
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/datastore"
+	"github.com/driv3r/fathom/pkg/models"
 
 	log "github.com/sirupsen/logrus"
 )

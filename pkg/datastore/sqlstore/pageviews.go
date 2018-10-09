@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 // GetPageview selects a single pageview by its string ID

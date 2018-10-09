@@ -2,7 +2,7 @@ package sqlstore
 
 import (
 	"database/sql"
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/models"
 	"time"
 )
 
@@ -30,16 +30,16 @@ func (db *sqlstore) UpdatePageStats(s *models.PageStats) error {
 
 func (db *sqlstore) GetAggregatedPageStats(startDate time.Time, endDate time.Time, limit int) ([]*models.PageStats, error) {
 	var result []*models.PageStats
-	query := db.Rebind(`SELECT 
-		hostname, 
-		pathname, 
-		SUM(pageviews) AS pageviews, 
-		SUM(visitors) AS visitors, 
-		SUM(entries) AS entries, 
-		COALESCE(ROUND(SUM(entries*bounce_rate) / NULLIF(SUM(entries), 0), 4), 0.00) AS bounce_rate, 
-		COALESCE(ROUND(SUM(avg_duration*pageviews) / SUM(pageviews), 4), 0.00) AS avg_duration 
-		FROM daily_page_stats WHERE date >= ? AND date <= ? 
-		GROUP BY hostname, pathname 
+	query := db.Rebind(`SELECT
+		hostname,
+		pathname,
+		SUM(pageviews) AS pageviews,
+		SUM(visitors) AS visitors,
+		SUM(entries) AS entries,
+		COALESCE(ROUND(SUM(entries*bounce_rate) / NULLIF(SUM(entries), 0), 4), 0.00) AS bounce_rate,
+		COALESCE(ROUND(SUM(avg_duration*pageviews) / SUM(pageviews), 4), 0.00) AS avg_duration
+		FROM daily_page_stats WHERE date >= ? AND date <= ?
+		GROUP BY hostname, pathname
 		ORDER BY pageviews DESC LIMIT ?`)
 	err := db.Select(&result, query, startDate.Format("2006-01-02"), endDate.Format("2006-01-02"), limit)
 	return result, err

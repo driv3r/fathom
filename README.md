@@ -1,8 +1,8 @@
 Fathom - simple website analytics
 ==============================
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/usefathom/fathom)](https://goreportcard.com/report/github.com/usefathom/fathom)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/usefathom/fathom/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/driv3r/fathom)](https://goreportcard.com/report/github.com/driv3r/fathom)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/driv3r/fathom/master/LICENSE)
 
 [Fathom Analytics](https://usefathom.com/) is a simpler and more privacy-focused alternative to Google Analytics.
 
@@ -16,20 +16,20 @@ We need to stop giving away our data and our users' privacy for free access to a
 
 Fathom [respects the privacy of your users and does not collect any personally identifiable information](https://usefathom.com/data/). All while giving you the information you need about your site, so you can make smarter decisions about your design and content.
 
-![Screenshot of the Fathom dashboard](https://github.com/usefathom/fathom/raw/master/assets/src/img/fathom.jpg?v=7)
+![Screenshot of the Fathom dashboard](https://github.com/driv3r/fathom/raw/master/assets/src/img/fathom.jpg?v=7)
 
 ## Installation
 
 For getting a development version of Fathom up & running, go through the following steps.
 
 1. Ensure you have [Golang](https://golang.org/doc/install#install) installed properly
-1. Get code: `git clone https://github.com/usefathom/fathom.git $GOPATH/src/github.com/usefathom/fathom` 
-1. Compile into binary & prepare assets: `make build` 
-1. (Optional) Set your [custom configuration values](https://github.com/usefathom/fathom/wiki/Configuration-file).
+1. Get code: `git clone https://github.com/driv3r/fathom.git $GOPATH/src/github.com/driv3r/fathom`
+1. Compile into binary & prepare assets: `make build`
+1. (Optional) Set your [custom configuration values](https://github.com/driv3r/fathom/wiki/Configuration-file).
 1. Register your user account: `fathom user add --email=<email> --password=<password>`
 1. Start the webserver: `fathom server` and then visit **http://localhost:8080** to access your analytics dashboard.
 
-To install and run Fathom in production, [have a look at the installation instructions](https://github.com/usefathom/fathom/wiki/Installing-&-running-Fathom).
+To install and run Fathom in production, [have a look at the installation instructions](https://github.com/driv3r/fathom/wiki/Installing-&-running-Fathom).
 
 ## Docker
 
@@ -47,7 +47,7 @@ To run [our pre-built Docker image](https://hub.docker.com/r/usefathom/fathom/),
 To start tracking, include the following JavaScript on your site and replace `yourfathom.com` with the URL to your Fathom instance.
 
 ```html
-<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+<!-- Fathom - simple website analytics - https://github.com/driv3r/fathom -->
 <script>
 (function(f, a, t, h, o, m){
 	a[h]=a[h]||function(){
@@ -74,9 +74,9 @@ img-src: yourfathom.com;
 
 ## Roadmap
 
-Find [our public roadmap here](https://trello.com/b/x2aBwH2J/fathom-roadmap). 
+Find [our public roadmap here](https://trello.com/b/x2aBwH2J/fathom-roadmap).
 
-If you have an idea or suggestion for Fathom, [submit it as an issue here on GitHub](https://github.com/usefathom/fathom/issues).
+If you have an idea or suggestion for Fathom, [submit it as an issue here on GitHub](https://github.com/driv3r/fathom/issues).
 
 ## Copyright and license
 

@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 func (db *sqlstore) GetReferrerStats(date time.Time, hostname string, pathname string) (*models.ReferrerStats, error) {
@@ -32,15 +32,15 @@ func (db *sqlstore) UpdateReferrerStats(s *models.ReferrerStats) error {
 func (db *sqlstore) GetAggregatedReferrerStats(startDate time.Time, endDate time.Time, limit int) ([]*models.ReferrerStats, error) {
 	var result []*models.ReferrerStats
 
-	sql := `SELECT 
+	sql := `SELECT
 		MIN(hostname) AS hostname,
 		MIN(pathname) AS pathname,
-		COALESCE(MIN(groupname), '') AS groupname,  
-		SUM(visitors) AS visitors, 
-		SUM(pageviews) AS pageviews, 
-		COALESCE(ROUND(SUM(pageviews*NULLIF(bounce_rate, 0)) / SUM(pageviews), 4), 0.00) AS bounce_rate, 
-		COALESCE(ROUND(SUM(avg_duration*pageviews) / SUM(pageviews), 4), 0.00) AS avg_duration 
-	FROM daily_referrer_stats 
+		COALESCE(MIN(groupname), '') AS groupname,
+		SUM(visitors) AS visitors,
+		SUM(pageviews) AS pageviews,
+		COALESCE(ROUND(SUM(pageviews*NULLIF(bounce_rate, 0)) / SUM(pageviews), 4), 0.00) AS bounce_rate,
+		COALESCE(ROUND(SUM(avg_duration*pageviews) / SUM(pageviews), 4), 0.00) AS avg_duration
+	FROM daily_referrer_stats
 	WHERE date >= ? AND date <= ? `
 
 	if db.Config.Driver == "sqlite3" {

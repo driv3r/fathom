@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
-	"github.com/usefathom/fathom/pkg/datastore"
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/driv3r/fathom/pkg/datastore"
+	"github.com/driv3r/fathom/pkg/models"
 )
 
 var userCmd = cli.Command{
